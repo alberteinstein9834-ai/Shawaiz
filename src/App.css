@@ -322,8 +322,9 @@ html {
   transform: translateY(-3px);
 }
 
-.hero-image .image-placeholder,
-.about-image .image-placeholder {
+
+.hero-image .image-placeholder, .about-image
+ {
   width: 100%;
   max-width: 400px;
   height: 400px;
@@ -334,6 +335,8 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+
 
 .avatar {
   width: calc(100% - 20px);

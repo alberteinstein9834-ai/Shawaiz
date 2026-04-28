@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import logoIcon from './assets/lock main.png';
 import Image from './assets//Shahwaiz1.png';
-import Image2 from './assets//Shazzy1.png';
+import Image2 from './assets//Shaz.png';
 
 // Import Link from React Router
 import { Link  } from 'react-router-dom';
@@ -174,7 +174,7 @@ function App() {
             </div>
             <div className="hero-image">
               <div className="image-placeholder">
-                <img src={Image} alt="Shahwaiz Irshad" className="hero-img" />
+                <img src={Image} alt="Shahwaiz Irshad" className="image-placeholder" />
               </div>
             </div>
           </div>
@@ -187,9 +187,7 @@ function App() {
           <h2 className="section-title">About <span className="highlight">Me</span></h2>
           <div className="about-content">
             <div className="about-image">
-              <div className="image-placeholder large">
-                <img src={Image2} alt="Shahwaiz Irshad" className="about-img" />
-              </div>
+              <img src={Image2} alt="Shahwaiz Irshad" className="about-image" />
             </div>
             <div className="about-text">
               <h3>Who Am I?</h3>
