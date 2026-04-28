@@ -4,6 +4,8 @@ import logoIcon from './assets/lock main.png';
 import Image from './assets//Shahwaiz1.png';
 import Image2 from './assets//Shazzy1.png';
 
+// Import Link from React Router
+import { Link  } from 'react-router-dom';
 
 // Import icons
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCode, FaReact, FaSearch, FaMobile, FaWordpress, FaCloud, FaExternalLinkAlt, FaMapMarkerAlt, FaPhone, FaClock, FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
@@ -15,6 +17,14 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Smooth scroll to section function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Check screen size
   useEffect(() => {
@@ -54,10 +64,7 @@ function App() {
   // Close mobile menu when clicking a link
   const handleLinkClick = (sectionId) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSection(sectionId);
   };
 
   // Track active section on scroll
@@ -76,7 +83,7 @@ function App() {
   }, []);
 
   // Data
-  const skills = ['React.js', 'JavaScript', 'HTML5/CSS3', 'Node.js',  'Git', 'Responsive Design', 'bootstrap'];
+  const skills = ['React.js', 'JavaScript', 'HTML5/CSS3', 'Node.js', 'Git', 'Responsive Design', 'bootstrap'];
   
   const services = [
     { icon: <FaCode />, title: 'Web Development', description: 'I build complete responsive websites from scratch or using modern tools. Whether you need a personal brand, a business presence. Clean, maintainable code — easy to update and scale. Custom HTML/CSS/JS websites — fully hand-coded, lightweight, and fast.' },
@@ -99,17 +106,18 @@ function App() {
       {/* Navigation Bar */}
       <nav className="navbar">
         <div className="nav-container">
-          <a href="#home" className="logo">
-            <img src={logoIcon} alt="Logo" /> SHAWAIZ</a>
+          <Link to="/" className="logo" onClick={() => scrollToSection('home')}>
+            <img src={logoIcon} alt="Logo" /> SHAWAIZ
+          </Link>
           
           {/* Desktop Navigation */}
           {!isMobile && (
             <ul className="nav-links">
-              <li><a href="#home" className={activeSection === 'home' ? 'active' : ''}>Home</a></li>
-              <li><a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a></li>
-              <li><a href="#services" className={activeSection === 'services' ? 'active' : ''}>Services</a></li>
-              <li><a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</a></li>
-              <li><a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
+              <li><Link to="/" onClick={() => scrollToSection('home')} className={activeSection === 'home' ? 'active' : ''}>Home</Link></li>
+              <li><Link to="/" onClick={() => scrollToSection('about')} className={activeSection === 'about' ? 'active' : ''}>About</Link></li>
+              <li><Link to="/" onClick={() => scrollToSection('services')} className={activeSection === 'services' ? 'active' : ''}>Services</Link></li>
+              <li><Link to="/" onClick={() => scrollToSection('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</Link></li>
+              <li><Link to="/" onClick={() => scrollToSection('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</Link></li>
             </ul>
           )}
           
@@ -135,11 +143,11 @@ function App() {
         {isMobile && mobileMenuOpen && (
           <div className="mobile-menu">
             <ul className="mobile-nav-links">
-              <li><a href="#home" onClick={() => handleLinkClick('home')} className={activeSection === 'home' ? 'active' : ''}>Home</a></li>
-              <li><a href="#about" onClick={() => handleLinkClick('about')} className={activeSection === 'about' ? 'active' : ''}>About</a></li>
-              <li><a href="#services" onClick={() => handleLinkClick('services')} className={activeSection === 'services' ? 'active' : ''}>Services</a></li>
-              <li><a href="#projects" onClick={() => handleLinkClick('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</a></li>
-              <li><a href="#contact" onClick={() => handleLinkClick('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
+              <li><Link to="/" onClick={() => handleLinkClick('home')} className={activeSection === 'home' ? 'active' : ''}>Home</Link></li>
+              <li><Link to="/" onClick={() => handleLinkClick('about')} className={activeSection === 'about' ? 'active' : ''}>About</Link></li>
+              <li><Link to="/" onClick={() => handleLinkClick('services')} className={activeSection === 'services' ? 'active' : ''}>Services</Link></li>
+              <li><Link to="/" onClick={() => handleLinkClick('projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</Link></li>
+              <li><Link to="/" onClick={() => handleLinkClick('contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</Link></li>
             </ul>
           </div>
         )}
@@ -154,8 +162,8 @@ function App() {
               <h2>A Passionate Web Developer</h2>
               <p>I builds modern, responsive, and user-friendly websites using modern technologies. I specialize in creating fast, scalable, and visually appealing web applications using the latest technologies.</p>
               <div className="hero-buttons">
-                <a href="#contact" className="btn-primary">Hire Me</a>
-                <a href="#projects" className="btn-secondary">View Projects</a>
+                <Link to="/" onClick={() => scrollToSection('contact')} className="btn-primary">Hire Me</Link>
+                <Link to="/" onClick={() => scrollToSection('projects')} className="btn-secondary">View Projects</Link>
               </div>
               <div className="social-links">
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
@@ -165,10 +173,8 @@ function App() {
               </div>
             </div>
             <div className="hero-image">
-              
               <div className="image-placeholder">
-              
-                <img src={Image} alt="Shahwaiz Irshad" className="image-placeholder" />
+                <img src={Image} alt="Shahwaiz Irshad" className="hero-img" />
               </div>
             </div>
           </div>
@@ -182,7 +188,7 @@ function App() {
           <div className="about-content">
             <div className="about-image">
               <div className="image-placeholder large">
-                <img src={Image2} alt="Shahwaiz Irshad" className="image-placeholder" />
+                <img src={Image2} alt="Shahwaiz Irshad" className="about-img" />
               </div>
             </div>
             <div className="about-text">
@@ -300,11 +306,11 @@ function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <Link to="/" onClick={() => scrollToSection('home')}>Home</Link>
+            <Link to="/" onClick={() => scrollToSection('about')}>About</Link>
+            <Link to="/" onClick={() => scrollToSection('services')}>Services</Link>
+            <Link to="/" onClick={() => scrollToSection('projects')}>Projects</Link>
+            <Link to="/" onClick={() => scrollToSection('contact')}>Contact</Link>
           </div>
           <div className="footer-social">
             <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
