@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import logoIcon from './assets/lock main.png';
-import Image from './assets//Shahwaiz1.png';
+import Image from './assets//shah.png';
 import Image2 from './assets//Shaz.png';
 
 // Import Link from React Router
